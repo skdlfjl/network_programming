@@ -13,3 +13,4 @@ for i in range(50):
 
 print('0~49까지의 수로 구성되는 리스트 : ', num_list)
 print('0~49까지 수의 제곱으로 구성되는 리스트 : ', squ_list)
+

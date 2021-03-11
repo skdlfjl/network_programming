@@ -24,5 +24,5 @@ for i in range(1,1001):
     for j in string:
         sum += int(j)
     
-    print(i, ' >> ' , sum)
+    print(i, '의 각 자리수의 합 >> ' , sum)
 

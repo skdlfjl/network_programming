@@ -8,7 +8,8 @@
 ● 작은 수가 0이 될 때까지 이 과정을 반목하라. 마지막 큰 수가 최대 공약수이다. '''
 
 
-a, b = map(int, input('Write down two numbers : ').split())  # 입력받은 값을 공백을 기준으로 분리한 뒤 int로 변환
+# 입력받은 값을 공백을 기준으로 분리한 뒤 int로 변환
+a, b = map(int, input('Write down two numbers : ').split())  
 
 remainder = max(a, b) % min(a, b)
 
@@ -20,3 +21,4 @@ while True:
         break
 
 print(GCD)
+

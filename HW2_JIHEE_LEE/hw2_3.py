@@ -14,3 +14,4 @@ idx = word.find('a')
 
 print(word[:idx + 1])
 print(word[idx + 1:])
+
