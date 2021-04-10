@@ -1,0 +1,10 @@
+Sat Apr 10 19:47:13 2021: Device1 : Temp = 1, Humid = 94, Iilum = 85
+Sat Apr 10 19:47:13 2021: Device1 : Temp = 28, Humid = 95, Iilum = 138
+Sat Apr 10 19:47:14 2021: Device1 : Temp = 26, Humid = 31, Iilum = 118
+Sat Apr 10 19:47:15 2021: Device1 : Temp = 36, Humid = 87, Iilum = 129
+Sat Apr 10 19:47:18 2021: Device1 : Temp = 32, Humid = 85, Iilum = 113
+Sat Apr 10 19:47:19 2021: Device2 : Heartbeat = 64, Steps = 5816, Cal = 2843
+Sat Apr 10 19:47:20 2021: Device2 : Heartbeat = 121, Steps = 3760, Cal = 2175
+Sat Apr 10 19:47:20 2021: Device2 : Heartbeat = 55, Steps = 3288, Cal = 3697
+Sat Apr 10 19:47:21 2021: Device2 : Heartbeat = 90, Steps = 4574, Cal = 2381
+Sat Apr 10 19:47:21 2021: Device2 : Heartbeat = 87, Steps = 3247, Cal = 3220
