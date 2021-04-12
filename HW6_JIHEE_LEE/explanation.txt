@@ -1,0 +1,66 @@
+간단한 웹 서버 프로그램 작성
+client로부터 HTTP요청이 들어온다 -> 해당 요청에 따라 자원을 전송해주는 웹 서버 구현
+
+웹 서버에서 처리 가능한 자원 : 'index.html'
+> index.html : 웹 페이지를 구성하는 html파일 (본인 이름/학번으로 변경)
+> 웹 브라우저는 'index.html'파일을 참조하여 'iot.png'를 추가요청 (새 사진)
+> 웹 브라우저는 자체적으로 'favicon.ico'파일을 요청할 수 있음 (라이언 아이콘)
+
+'http://127.0.0.1/index.html'만 처리 가능하다고 가정 (http://127.0.0.1 는 host)
+
+> 처리 불가능한 자원 요청 시, "Not Found"를 html로 전송하여 출력하도록
+> 즉, 'http://127.0.0.1/aaaaa' 입력시 "Not Found" 출력
+
+-----------------------------------------------------------------------------------
+
+동작
+
+1. 웹 서버 소켓(port : 80)을 열고 웹 클라이언트의 연결을 기다림
+
+2. 클라이언트의 연결이 들어올 경우,
+   클라이언트와 통신할 소켓으로부터 HTTP Request의 첫번째 라인(요청라인)을 읽어들임
+   > 요청 라인은 "GET /index.html HTTP/1.1"의 형식
+
+   req : ['GET /index.html HTTP/1.1', 'Host: 127.0.0.1', 'Connection: keep-alive', 
+   'Cache-Control: max-age=0', 'sec-ch-ua: "Google Chrome";v="89", "Chromium";v="89", 
+   ";Not A Brand";v="99"', 'sec-ch-ua-mobile: ?0', 'Upgrade-Insecure-Requests: 1', 
+   'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 
+   (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36', 
+   'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,
+   image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9', 
+   'Sec-Fetch-Site: none', 'Sec-Fetch-Mode: navigate', 'Sec-Fetch-User: ?1', 
+   'Sec-Fetch-Dest: document', 'Accept-Encoding: gzip, deflate, br', 
+   'Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7', '', '']
+
+3. 요청하는 자원(파일 이름)을 나타내는 "/index.html"을 파싱
+
+4. "/" 제거하여 파일이름을 얻음 (filename이라고 가정)
+
+5. 해당 파일이 존재하는 경우 해당 파일을 오픈
+
+5-(1). 각 파일에 대한 mimeType 설정
+    > mimeType : 전송되는 객체가 무엇인지를 나타내줌 (text/html, image/png)
+- index.html 파일인 경우
+f = open(filename, 'r', encoding = 'utf-8')
+mimeType = 'text/html'
+- iot.png 파일인 경우
+f = open(filename, 'rb')
+mimeType = 'image/png'
+- favicon.ico 파일인 경우
+f = open(filename, 'rb')
+mimeType = 'image/x-icon'
+
+5-(2). HTTP Response 메세지를 다음과 같이 생성하여 전송
+'HTTP/1.1 200 OK\r\n'
+'Content-Type: ' + mimeType + '\r\n'
+'\r\n'
+
+5-(3). 파일을 읽어서 전송 : data = f.read()
+index.html 파일(한글 텍스트 파일)의 경우: c.send(data.encode('euc-kr'))
+그 외 파일(바이너리 파일)의 경우: c.send(data)
+
+6. 해당 파일이 존재하지 않는 경우, HTTP Response 메세지를 다음과 같이 생성하여 전송
+'HTTP/1.1 404 Not Found\r\n'
+'\r\n'
+'<HTML><HEAD><TITLE>Not Found</TITLE></HEAD>'
+'<BODY>Not Found</BODY></HTML>'
