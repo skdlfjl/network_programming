@@ -76,6 +76,7 @@ while True:
                 for i in range(len(id_list)):
                     if s == id_list[i][0]:
                         msg = id_list[i][1].decode() + ' ' + data.decode()
+                        print(time.asctime() + str(addr) + ' :' , msg)
                         #print(msg)
                 # 이때, c_list 안에 있는 0번째 소켓은 서버소켓이다
                 # 그러니까 c_list[0]번째를 제외하고, 나머지 소켓들에게만 send        
