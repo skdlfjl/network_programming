@@ -1,0 +1,10 @@
+Thu Jun  3 14:10:45 2021: Device1 : Temp = 38, Humid = 73, Iilum = 122
+Thu Jun  3 14:10:45 2021: Device2 : Heartbeat = 67, Steps = 3123, Cal = 2279
+Thu Jun  3 14:10:48 2021: Device1 : Temp = 24, Humid = 52, Iilum = 94
+Thu Jun  3 14:10:50 2021: Device2 : Heartbeat = 135, Steps = 5542, Cal = 1059
+Thu Jun  3 14:10:51 2021: Device1 : Temp = 8, Humid = 88, Iilum = 73
+Thu Jun  3 14:10:54 2021: Device1 : Temp = 35, Humid = 82, Iilum = 70
+Thu Jun  3 14:10:55 2021: Device2 : Heartbeat = 106, Steps = 4983, Cal = 2475
+Thu Jun  3 14:10:57 2021: Device1 : Temp = 4, Humid = 25, Iilum = 128
+Thu Jun  3 14:11:00 2021: Device2 : Heartbeat = 73, Steps = 4394, Cal = 2280
+Thu Jun  3 14:11:05 2021: Device2 : Heartbeat = 82, Steps = 2452, Cal = 3467
